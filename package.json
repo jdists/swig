@@ -36,8 +36,8 @@
     "swig": "^1.4.2"
   },
   "devDependencies": {
-    "@types/swig": "^0.8.30",
     "@types/node": "^8.0.33",
+    "@types/swig": "0.0.29",
     "gulp": "^3.9.1",
     "gulp-examplejs": "0.0.9",
     "gulp-jdists": "^2.0.17",
