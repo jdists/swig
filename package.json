@@ -1,6 +1,6 @@
 {
   "name": "@jdists/swig",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "swig as jdists processor",
   "main": "lib/index",
   "typings": "lib/index.d.ts",
@@ -32,8 +32,7 @@
   },
   "homepage": "https://github.com/jdists/swig#readme",
   "dependencies": {
-    "jdists-util": "^0.0.7",
-    "js-yaml": "^3.10.0",
+    "jdists-util": "^0.1.2",
     "swig": "^1.4.2"
   },
   "devDependencies": {

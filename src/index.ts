@@ -1,8 +1,7 @@
 import * as swig from 'swig'
 import * as jdistsUtil from 'jdists-util'
-import * as jsyaml from 'js-yaml'
 
-interface IswigAttrs extends jdistsUtil.IAttrs {
+interface ISwigAttrs extends jdistsUtil.IAttrs {
   /**
    * 数据来源
    */
@@ -21,26 +20,10 @@ interface IswigAttrs extends jdistsUtil.IAttrs {
  * @example processor():base
   ```js
   let attrs = {
-    data: '#name'
-  }
-  let scope = {
-    execImport: function (importion) {
-      return `
-        name: tom
-        age: 13
-      `
-    },
-  }
-  console.log(processor('<b>{{name}} - {{age}}</b>', attrs, scope))
-  // > <b>tom - 13</b>
-  ```
- * @example processor():execImport is object
-  ```js
-  let attrs = {
     data: '#name',
   }
   let scope = {
-    execImport: function (importion) {
+    execImport: function (importion, isYaml) {
       return {
         name: 'tom',
         age: 13,
@@ -63,16 +46,13 @@ interface IswigAttrs extends jdistsUtil.IAttrs {
   // > null
   ```
  */
-export = (function (content: string, attrs: IswigAttrs, scope: jdistsUtil.IScope): string {
+export = (function (content: string, attrs: ISwigAttrs, scope: jdistsUtil.IScope): string {
   if (!content) {
     return content
   }
   let data = null
   if (attrs.data) {
-    data = scope.execImport(attrs.data)
-    if (typeof data === 'string') {
-      data = jsyaml.safeLoad(data)
-    }
+    data = scope.execImport(attrs.data, true)
   }
   let render = swig.compile(content)
   return render(data)
